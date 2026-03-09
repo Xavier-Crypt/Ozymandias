@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<!-- =========================================================
+     OZYMANDIAS.DAT
+     Acervo do Caçador Azrael
+     ========================================================= -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ozymandias.dat</title>
+
+<style>
+
+/* =============================
+   ESTILO GERAL
+   ============================= */
+
+body{
+    background:#0a0a0a;
+    color:#00ff9c;
+    font-family:Consolas, monospace;
+    margin:0;
+}
+
+#mainContent{
+    display:none;
+    padding:40px;
+}
+
+h1{
+    color:#00ffaa;
+    border-bottom:1px solid #00ffaa;
+    padding-bottom:10px;
+    margin-top:0;
+}
+
+.category{
+    margin-top:15px;
+}
+
+button{
+    background:#111;
+    color:#00ff9c;
+    border:1px solid #00ff9c;
+    padding:10px;
+    cursor:pointer;
+    width:320px;
+    text-align:left;
+    transition:0.2s;
+}
+
+button:hover{
+    background:#00ff9c;
+    color:black;
+}
+
+.content{
+    display:none;
+    padding:10px;
+    margin-top:5px;
+    border-left:2px solid #00ff9c;
+}
+
+b{
+    color:#ffffff;
+}
+
+/* =============================
+   TELA DE CARREGAMENTO
+   ============================= */
+
+#loadingScreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    color:#00ff9c;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+#bootBox{
+    width:80%;
+    max-width:700px;
+    line-height:1.8;
+    font-size:20px;
+}
+
+.cursor{
+    animation:blink 0.8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+/* =============================
+   EFEITO SCAN
+   ============================= */
+
+#scanline{
+    position:fixed;
+    top:-10%;
+    left:0;
+    width:100%;
+    height:12px;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,255,156,0),
+        rgba(0,255,156,0.35),
+        rgba(0,255,156,0)
+    );
+    box-shadow:0 0 12px rgba(0,255,156,0.25);
+    pointer-events:none;
+    z-index:9998;
+    animation:scanMove 4s linear infinite;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events:none;
+    z-index:9997;
+    opacity:0.08;
+}
+
+@keyframes scanMove{
+    from{
+        top:-10%;
+    }
+    to{
+        top:110%;
+    }
+}
+
+/* =============================
+   PIP-BOY
+   ============================= */
+
+#pipboy{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:120px;
+    border:1px solid #00ff9c;
+    background:#050505;
+    padding:6px;
+    box-shadow:0 0 12px rgba(0,255,156,0.18);
+    z-index:20;
+}
+
+#pipboy img{
+    width:100%;
+    display:block;
+    image-rendering:auto;
+}
+
+#pipboyLabel{
+    text-align:center;
+    font-size:12px;
+    margin-top:6px;
+    color:#00ffaa;
+}
+
+/* dá espaço para o gif não cobrir o texto */
+#headerBlock{
+    padding-right:170px;
+}
+
+</style>
+
+<script>
+function toggle(id){
+    var el = document.getElementById(id);
+
+    if(el.style.display === "block"){
+        el.style.display = "none";
+    } else {
+        el.style.display = "block";
+    }
+}
+
+window.onload = function(){
+    var bootBox = document.getElementById("bootBox");
+
+    bootBox.innerHTML =
+        "> Booting OZYMANDIAS.dat<br>" +
+        "> Accessing encrypted archives<br>" +
+        "> Loading hunter database<br>" +
+        "> System ready <span class='cursor'>█</span>";
+
+    setTimeout(function(){
+        document.getElementById("loadingScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    }, 900);
+}
+</script>
+
+</head>
+
+<body>
+
+<div id="scanline"></div>
+
+<div id="loadingScreen">
+    <div id="bootBox"></div>
+</div>
+
+<div id="pipboy">
+    <img src="https://i.pinimg.com/originals/64/b3/7a/64b37aadcaab45f2fa0348897cacda54.jpg" alt="Pip-Boy">
+    <div id="pipboyLabel">STATUS: ONLINE</div>
+</div>
+
+<div id="mainContent">
+
+<div id="headerBlock">
+    <h1>OZYMANDIAS.DAT</h1>
+
+    <p>
+    Acervo de consulta rápida contendo fraquezas de entidades sobrenaturais
+    e anotações técnicas sobre habilidades desenvolvidas por Dennis.
+    </p>
+</div>
+
+<div class="category">
+    <button onclick="toggle('vampiros')">[ ENTIDADE ] VAMPIROS</button>
+
+    <div class="content" id="vampiros">
+        <p><b>Fraquezas Básicas</b><br>
+        Exposição solar, fogo intenso e decapitação.</p>
+
+        <p><b>Anatomia Vampírica</b><br>
+        Conhecimento de pontos vitais capazes de maximizar dano letal.</p>
+
+        <p><b>Necessidade de Sangue</b><br>
+        Sangue humano é necessário para manutenção fisiológica
+        e ativação de habilidades sobrenaturais.</p>
+
+        <p><b>Identificação</b></p>
+        <ul>
+            <li>Pele anormalmente pálida</li>
+            <li>Ausência de reflexo em prata</li>
+            <li>Atividade exclusivamente noturna</li>
+        </ul>
+    </div>
+</div>
+
+<div class="category">
+    <button onclick="toggle('bruxos')">[ ENTIDADE ] BRUXOS</button>
+
+    <div class="content" id="bruxos">
+        <p><b>Fraquezas Básicas</b></p>
+        <ul>
+            <li>Sal grosso interrompe rituais</li>
+            <li>Ferro frio interfere na condução mágica</li>
+            <li>Círculos mágicos podem ser quebrados fisicamente</li>
+        </ul>
+    </div>
+</div>
+
+<div class="category">
+    <button onclick="toggle('habilidades')">[ OPERACIONAL ] HABILIDADES</button>
+
+    <div class="content" id="habilidades">
+        <p><b>Explosivos Caseiros</b><br>
+        Construção de bombas improvisadas, dispositivos incendiários
+        e armadilhas explosivas.</p>
+
+        <p><b>Furtividade</b><br>
+        Movimentação silenciosa, infiltração urbana e
+        camuflagem em ambientes hostis.</p>
+
+        <p><b>Hacking Avançado</b><br>
+        Invasão de sistemas, manipulação de câmeras,
+        acesso a bancos de dados governamentais.</p>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>
