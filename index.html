@@ -96,9 +96,7 @@ b{
 }
 
 @keyframes blink{
-    50%{
-        opacity:0;
-    }
+    50%{opacity:0;}
 }
 
 /* =============================
@@ -143,16 +141,12 @@ body::after{
 }
 
 @keyframes scanMove{
-    from{
-        top:-10%;
-    }
-    to{
-        top:110%;
-    }
+    from{ top:-10%; }
+    to{ top:110%; }
 }
 
 /* =============================
-   PIP-BOY
+   PIPBOY
    ============================= */
 
 #pipboy{
@@ -163,14 +157,10 @@ body::after{
     border:1px solid #00ff9c;
     background:#050505;
     padding:6px;
-    box-shadow:0 0 12px rgba(0,255,156,0.18);
-    z-index:20;
 }
 
 #pipboy img{
     width:100%;
-    display:block;
-    image-rendering:auto;
 }
 
 #pipboyLabel{
@@ -180,25 +170,36 @@ body::after{
     color:#00ffaa;
 }
 
-/* dá espaço para o gif não cobrir o texto */
-#headerBlock{
-    padding-right:170px;
+/* imagens de equipamento */
+
+.itemImg{
+    width:200px;
+    border:1px solid #00ff9c;
+    margin-top:6px;
+}
+
+hr{
+    border:0;
+    border-top:1px solid #00ff9c;
+    margin:20px 0;
 }
 
 </style>
 
 <script>
+
 function toggle(id){
     var el = document.getElementById(id);
 
     if(el.style.display === "block"){
         el.style.display = "none";
-    } else {
+    }else{
         el.style.display = "block";
     }
 }
 
 window.onload = function(){
+
     var bootBox = document.getElementById("bootBox");
 
     bootBox.innerHTML =
@@ -208,10 +209,12 @@ window.onload = function(){
         "> System ready <span class='cursor'>█</span>";
 
     setTimeout(function(){
-        document.getElementById("loadingScreen").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-    }, 900);
+        document.getElementById("loadingScreen").style.display="none";
+        document.getElementById("mainContent").style.display="block";
+    },900);
+
 }
+
 </script>
 
 </head>
@@ -221,78 +224,164 @@ window.onload = function(){
 <div id="scanline"></div>
 
 <div id="loadingScreen">
-    <div id="bootBox"></div>
+<div id="bootBox"></div>
 </div>
 
 <div id="pipboy">
-    <img src="https://i.pinimg.com/originals/64/b3/7a/64b37aadcaab45f2fa0348897cacda54.jpg" alt="Pip-Boy">
-    <div id="pipboyLabel">STATUS: ONLINE</div>
+<img src="https://media.tenor.com/6fpC80BmM88AAAAM/fall-out.gif">
+<div id="pipboyLabel">STATUS: ONLINE</div>
 </div>
 
 <div id="mainContent">
 
-<div id="headerBlock">
-    <h1>OZYMANDIAS.DAT</h1>
+<h1>OZYMANDIAS.DAT</h1>
 
-    <p>
-    Acervo de consulta rápida contendo fraquezas de entidades sobrenaturais
-    e anotações técnicas sobre habilidades desenvolvidas por Dennis.
-    </p>
-</div>
+<p>
+Acervo de consulta rápida contendo fraquezas de entidades sobrenaturais
+e anotações técnicas sobre habilidades desenvolvidas por Dennis.
+</p>
 
-<div class="category">
-    <button onclick="toggle('vampiros')">[ ENTIDADE ] VAMPIROS</button>
-
-    <div class="content" id="vampiros">
-        <p><b>Fraquezas Básicas</b><br>
-        Exposição solar, fogo intenso e decapitação.</p>
-
-        <p><b>Anatomia Vampírica</b><br>
-        Conhecimento de pontos vitais capazes de maximizar dano letal.</p>
-
-        <p><b>Necessidade de Sangue</b><br>
-        Sangue humano é necessário para manutenção fisiológica
-        e ativação de habilidades sobrenaturais.</p>
-
-        <p><b>Identificação</b></p>
-        <ul>
-            <li>Pele anormalmente pálida</li>
-            <li>Ausência de reflexo em prata</li>
-            <li>Atividade exclusivamente noturna</li>
-        </ul>
-    </div>
-</div>
+<!-- =============================
+     VAMPIROS
+============================= -->
 
 <div class="category">
-    <button onclick="toggle('bruxos')">[ ENTIDADE ] BRUXOS</button>
 
-    <div class="content" id="bruxos">
-        <p><b>Fraquezas Básicas</b></p>
-        <ul>
-            <li>Sal grosso interrompe rituais</li>
-            <li>Ferro frio interfere na condução mágica</li>
-            <li>Círculos mágicos podem ser quebrados fisicamente</li>
-        </ul>
-    </div>
+<button onclick="toggle('vampiros')">
+[ ENTIDADE ] VAMPIROS
+</button>
+
+<div class="content" id="vampiros">
+
+<p><b>Fraquezas Básicas</b><br>
+Exposição solar, fogo intenso e decapitação.</p>
+
+<p><b>Anatomia Vampírica</b><br>
+Conhecimento de pontos vitais capazes de maximizar dano letal.</p>
+
+<p><b>Necessidade de Sangue</b><br>
+Sangue humano é necessário para manutenção fisiológica
+e ativação de habilidades sobrenaturais.</p>
+
+<ul>
+<li>Pele pálida</li>
+<li>Ausência de reflexo em prata</li>
+<li>Atividade noturna</li>
+</ul>
+
 </div>
+</div>
+
+<!-- =============================
+     BRUXOS
+============================= -->
 
 <div class="category">
-    <button onclick="toggle('habilidades')">[ OPERACIONAL ] HABILIDADES</button>
 
-    <div class="content" id="habilidades">
-        <p><b>Explosivos Caseiros</b><br>
-        Construção de bombas improvisadas, dispositivos incendiários
-        e armadilhas explosivas.</p>
+<button onclick="toggle('bruxos')">
+[ ENTIDADE ] BRUXOS
+</button>
 
-        <p><b>Furtividade</b><br>
-        Movimentação silenciosa, infiltração urbana e
-        camuflagem em ambientes hostis.</p>
+<div class="content" id="bruxos">
 
-        <p><b>Hacking Avançado</b><br>
-        Invasão de sistemas, manipulação de câmeras,
-        acesso a bancos de dados governamentais.</p>
-    </div>
+<ul>
+<li>Sal grosso bloqueia feitiços</li>
+<li>Ferro frio perturba magia</li>
+<li>Círculos mágicos podem ser quebrados</li>
+</ul>
+
 </div>
+</div>
+
+<!-- =============================
+     HABILIDADES
+============================= -->
+
+<div class="category">
+
+<button onclick="toggle('habilidades')">
+[ OPERACIONAL ] HABILIDADES
+</button>
+
+<div class="content" id="habilidades">
+
+<p><b>Explosivos Caseiros</b><br>
+Construção de bombas improvisadas e incendiárias.</p>
+
+<p><b>Furtividade</b><br>
+Movimentação silenciosa e infiltração.</p>
+
+<p><b>Hacking Avançado</b><br>
+Invasão de sistemas e manipulação de bancos de dados.</p>
+
+</div>
+</div>
+
+<!-- =============================
+     ARSENAL DE DENNIS
+============================= -->
+
+<div class="category">
+
+<button onclick="toggle('equipamentos')">
+[ EQUIPAMENTO ] ARSENAL
+</button>
+
+<div class="content" id="equipamentos">
+
+<p><b>Notebook Rugged</b></p>
+
+<img class="itemImg"
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ699oTJpyB9PF8Rf3ZfuSyEH1xMxOBWFrLlA&s">
+
+<p>
+Notebook reforçado para uso em campo, resistente a impacto, poeira,
+umidade e variações de temperatura.
+</p>
+
+<ul>
+<li>Executar softwares pesados sem penalidade</li>
+<li>Operar em condições climáticas adversas</li>
+<li>Programar dispositivos como BadUSB</li>
+<li>Armazenar grandes volumes de dados</li>
+</ul>
+
+<hr>
+
+<p><b>BadUSB</b></p>
+
+<img class="itemImg"
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFjVTPrmFOeXwo0IryQM3E-x9P73yU5ZFf1g&s">
+
+<ul>
+<li>Instalar keylogger</li>
+<li>Implantar trojan</li>
+<li>Criar backdoor persistente</li>
+<li>Roubar credenciais e arquivos</li>
+<li>Enviar dados para destino configurado</li>
+</ul>
+
+<hr>
+
+<p><b>Jammer</b></p>
+
+<img class="itemImg"
+src="https://http2.mlstatic.com/D_NQ_NP_926708-CBT83861274303_042025-O.webp">
+
+<p>
+Dispositivo portátil que interfere em sinais sem fio ao emitir ruído
+nas mesmas frequências utilizadas por Wi-Fi, telefonia e rádio.
+
+<p><b>Ozymandias</b></p>
+
+<img class="itemImg"
+src="https://i.ytimg.com/vi/FqL9P0Up_Dw/maxresdefault.jpg">
+
+<p>
+Servidor fantasma que é oculto em um pequeno rack na farmácia. É usado como repositório central de dados sensíveis obtidos de fontes como bancos policiais e registros hospitalares. O sistema executa ferramentas de criptografia, softwares especializados e mantém comunicação segura entre caçadores. Dados coletados em campo, por exemplo, via BadUSB podem ser transferidos e sincronizados com o servidor, expandindo continuamente o banco de informações. Ao utilizá-lo para pesquisa ou analise, Azrael recebe vantagem em testes mentais relacionados a investigação, invasão de dispositivos ou descriptografia.
+Protocolos de segurança podem apagar ou criptografar automaticamente os dados em caso de acesso não autorizado. 
+
+</p>
 
 </div>
 
